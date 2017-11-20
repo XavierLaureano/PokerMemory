@@ -72,4 +72,8 @@ public class FlushLevel extends RankTrioLevel {
 				}
 				return false;
 	}
+	
+	public static void testClass(){
+		
+	}
 }
