@@ -29,6 +29,7 @@ public class MemoryFrame extends JFrame {
 	private GameLevel difficulty;
 	private JPanel centerGrid;
 	private JLabel levelDescriptionLabel;
+	private JLabel scoreLabel;
 
 	/**
 	 * Launch the application.
@@ -85,7 +86,7 @@ public class MemoryFrame extends JFrame {
 		
 		JMenuItem sameRankTrioMenuItem = new JMenuItem("Same Rank Trio Level");
 		sameRankTrioMenuItem.addActionListener(menuHandler);		
-		mnFile.add(sameRankTrioMenuItem);		
+		mnFile.add(sameRankTrioMenuItem);
 		
 		JMenu mnHelp = new JMenu("Help");
 		menuBar.add(mnHelp);
@@ -141,12 +142,12 @@ public class MemoryFrame extends JFrame {
 		Component horizontalGlue_1 = Box.createHorizontalGlue();
 		panel_1.add(horizontalGlue_1);
 
-		JLabel lblNewLabel_3 = new JLabel("Points:");
-		panel_1.add(lblNewLabel_3);
+		JLabel pointsLabel = new JLabel("Points:");
+		panel_1.add(pointsLabel);
 
-		JLabel lblNewLabel_2 = new JLabel("CULO");
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.RIGHT);
-		panel_1.add(lblNewLabel_2);
+		scoreLabel = new JLabel("New label");
+		scoreLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		panel_1.add(scoreLabel);
 
 		Component horizontalStrut_3 = Box.createHorizontalStrut(20);
 		panel_1.add(horizontalStrut_3);
@@ -175,6 +176,14 @@ public class MemoryFrame extends JFrame {
 	public void setLevelDescriptionLabel(JLabel levelDescriptionLabel) {
 		this.levelDescriptionLabel = levelDescriptionLabel;
 	}
+	
+	public void setGameLevel(GameLevel l) {
+		this.difficulty = l;
+	}
+	
+	public void setScore(long score) {
+		this.scoreLabel.setText("" + score);
+	}
 
 	/**
 	 * Prepares a new game (first game or non-first game)
@@ -183,21 +192,21 @@ public class MemoryFrame extends JFrame {
 	public void newGame(String difficultyMode) throws IOException
 	{
 		// Reset the turn counter label
-		this.turnCounterLabel.reset();
+		this.getTurnCounterLabel().reset();
 
 		// make a new card field with cards, and add it to the window
 
 		if(difficultyMode.equalsIgnoreCase("easy")) {
-			this.difficulty = new EasyLevel(this.turnCounterLabel, this);
+			this.setGameLevel(new EasyLevel(this.getTurnCounterLabel(), this));
 			this.getLevelDescriptionLabel().setText("Easy Level");
 		}
 		else if(difficultyMode.equalsIgnoreCase("equalpair")){
-			this.difficulty = new EqualPairLevel(this.turnCounterLabel, this);
+			this.setGameLevel(new EqualPairLevel(this.getTurnCounterLabel(), this));
 			this.getLevelDescriptionLabel().setText("Equal Pair Level");
 		}
 
 		else if(difficultyMode.equalsIgnoreCase("ranktrio")){
-			this.difficulty = new RankTrioLevel(this.turnCounterLabel, this);
+			this.setGameLevel(new RankTrioLevel(this.getTurnCounterLabel(), this));
 			this.getLevelDescriptionLabel().setText("Same Rank Trio Level");
 		}
 
@@ -237,7 +246,7 @@ public class MemoryFrame extends JFrame {
 	/**
 	 * Shows an instructional dialog box to the user
 	 */
-	private void showInstructions()
+	void showInstructions()
 	{
 		dprintln("MemoryGame.showInstructions()");
 		final String HOWTOPLAYTEXT = 
@@ -277,7 +286,7 @@ public class MemoryFrame extends JFrame {
 	/**
 	 * Shows an dialog box with information about the program
 	 */
-	private void showAbout()
+	void showAbout()
 	{
 		dprintln("MemoryGame.showAbout()");
 		final String ABOUTTEXT = "Game Customized at UPRM. Originally written by Mike Leonhard";
@@ -293,5 +302,6 @@ public class MemoryFrame extends JFrame {
 	static public void dprintln( String message )
 	{
 		if (DEBUG) System.out.println( message );
+		
 	}
 }
