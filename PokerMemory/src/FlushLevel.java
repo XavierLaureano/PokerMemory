@@ -20,6 +20,10 @@ public class FlushLevel extends RankTrioLevel {
 		ImageIcon backIcon = this.getCardIcons()[this.getTotalCardsPerDeck()];
 
 		int cardsToAdd[] = new int[getRowsPerGrid() * getCardsPerRow()];
+//		int clubs = 0, diamonds = 1, hearts = 2, spades = 3;
+//		int c = 0, d = 15, h = 30, s = 40;
+//		
+//		switch ()
 		for(int i = 0; i < (getRowsPerGrid() * getCardsPerRow()); i++)
 		{
 			cardsToAdd[i] = i;

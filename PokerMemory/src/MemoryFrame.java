@@ -66,7 +66,6 @@ public class MemoryFrame extends JFrame {
 					if(e.getActionCommand().equals("Easy Level")) newGame("easy");
 					else if(e.getActionCommand().equals("Equal Pair Level")) newGame("equalpair");
 					else if(e.getActionCommand().equals("Same Rank Trio Level")) newGame("ranktrio");
-					else if(e.getActionCommand().equals("Flush Level")) newGame("flushLevel");
 					else if(e.getActionCommand().equals("How To Play")) showInstructions();
 					else if(e.getActionCommand().equals("About")) showAbout();
 					else if(e.getActionCommand().equals("Exit")) System.exit(0);
@@ -86,20 +85,7 @@ public class MemoryFrame extends JFrame {
 		
 		JMenuItem sameRankTrioMenuItem = new JMenuItem("Same Rank Trio Level");
 		sameRankTrioMenuItem.addActionListener(menuHandler);		
-		mnFile.add(sameRankTrioMenuItem);
-		
-		JMenuItem flushLevelMenuItem = new JMenuItem("Flush Level");
-		flushLevelMenuItem.addActionListener(menuHandler);
-		mnFile.add(flushLevelMenuItem);
-		
-		JMenuItem straightLevelMenuItem = new JMenuItem("Straight Level");
-		straightLevelMenuItem.addActionListener(menuHandler);
-		mnFile.add(straightLevelMenuItem);
-		
-		JMenuItem comboLevelMenuItem = new JMenuItem("Combo Level");
-		comboLevelMenuItem.addActionListener(menuHandler);
-		mnFile.add(comboLevelMenuItem);
-		
+		mnFile.add(sameRankTrioMenuItem);		
 		
 		JMenu mnHelp = new JMenu("Help");
 		menuBar.add(mnHelp);
@@ -143,7 +129,7 @@ public class MemoryFrame extends JFrame {
 		panel_1.add(lblNewLabel);
 		
 		turnCounterLabel = new TurnsTakenCounterLabel();
-		turnCounterLabel.setText("uiijiji");
+		turnCounterLabel.setText("");
 		panel_1.add(turnCounterLabel);
 
 		Component horizontalGlue = Box.createHorizontalGlue();
@@ -213,11 +199,6 @@ public class MemoryFrame extends JFrame {
 		else if(difficultyMode.equalsIgnoreCase("ranktrio")){
 			this.difficulty = new RankTrioLevel(this.turnCounterLabel, this);
 			this.getLevelDescriptionLabel().setText("Same Rank Trio Level");
-		}
-		
-		else if(difficultyMode.equalsIgnoreCase("flushLevel")){
-			this.difficulty = new FlushLevel(this.turnCounterLabel, this);
-			this.getLevelDescriptionLabel().setText("Flush Level");
 		}
 
 		else {
