@@ -52,7 +52,7 @@ public class MemoryFrame extends JFrame {
 	 */
 	public MemoryFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800,700);
+		setBounds(100, 100, 800, 600);
 
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -104,7 +104,7 @@ public class MemoryFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(5, 5));
 
-		JLabel lblPokerMemory = new JLabel("PoKer Memory");
+		JLabel lblPokerMemory = new JLabel("POKER MEMORY");
 		lblPokerMemory.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(lblPokerMemory, BorderLayout.NORTH);
 
@@ -126,7 +126,7 @@ public class MemoryFrame extends JFrame {
 		Component horizontalStrut_2 = Box.createHorizontalStrut(20);
 		panel_1.add(horizontalStrut_2);
 
-		JLabel lblNewLabel = new JLabel("Clicks:");
+		JLabel lblNewLabel = new JLabel("Turns: ");
 		panel_1.add(lblNewLabel);
 		
 		turnCounterLabel = new TurnsTakenCounterLabel();
@@ -142,7 +142,7 @@ public class MemoryFrame extends JFrame {
 		Component horizontalGlue_1 = Box.createHorizontalGlue();
 		panel_1.add(horizontalGlue_1);
 
-		JLabel pointsLabel = new JLabel("Points:");
+		JLabel pointsLabel = new JLabel("Points: ");
 		panel_1.add(pointsLabel);
 
 		scoreLabel = new JLabel("New label");

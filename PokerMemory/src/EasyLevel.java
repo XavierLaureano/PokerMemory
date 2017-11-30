@@ -64,13 +64,19 @@ public class EasyLevel extends GameLevel {
 		}
 	}
 
+	MemoryFrame memoryFrame = new MemoryFrame();
+	
 	@Override
 	protected boolean turnUp(Card card) {
+		long score = 0;
 		// Turn up any card until all are turned up
 		this.getMainFrame().getTurnCounterLabel().setText("5");
 		if(this.getTurnedCardsBuffer().size() < this.getTotalUniqueCards()) 
 		{
 			this.getTurnsTakenCounter().increment();
+			score = 10;
+			memoryFrame.setScore(score);
+			//System.out.println("Score: " + myMemoryFrame.getScore());
 			this.getTurnedCardsBuffer().add(card);
 			return true;
 		}

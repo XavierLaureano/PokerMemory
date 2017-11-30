@@ -75,10 +75,13 @@ public class EqualPairLevel extends EasyLevel {
 				// get the other card (which was already turned up)
 				Card otherCard = (Card) this.getTurnedCardsBuffer().get(0);
 				// the cards match, so remove them from the list (they will remain face up)
-				if( otherCard.getNum() == card.getNum())
+				if( otherCard.getNum() == card.getNum()){
 					this.getTurnedCardsBuffer().clear();
+				}
 				// the cards do not match, so start the timer to turn them down
-				else this.getTurnDownTimer().start();
+				else {
+					this.getTurnDownTimer().start();
+				}
 			}
 			return true;
 		}

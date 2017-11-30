@@ -2,6 +2,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 public class FlushLevel extends RankTrioLevel {
+	
+	long scoreValue = 0;
+	ScorePerCard scorePerCard = new ScorePerCard();
 
 	protected FlushLevel(TurnsTakenCounterLabel validTurnTime, JFrame mainFrame) {
 		super(validTurnTime, mainFrame);
@@ -42,7 +45,7 @@ public class FlushLevel extends RankTrioLevel {
 			this.getGrid().add( new Card(this, this.getCardIcons()[num], backIcon, num, rank, suit));
 		}
 	}
-
+	
 	@Override
 	protected boolean turnUp(Card card) {
 		// TODO Auto-generated method stub
@@ -61,12 +64,21 @@ public class FlushLevel extends RankTrioLevel {
 						Card otherCard2 = (Card) this.getTurnedCardsBuffer().get(1);
 						Card otherCard3 = (Card) this.getTurnedCardsBuffer().get(2);
 						Card otherCard4 = (Card) this.getTurnedCardsBuffer().get(3);
-						if((card.getSuit().equals(otherCard1.getSuit())) && (card.getSuit().equals(otherCard2.getSuit())) && (card.getSuit().equals(otherCard3.getSuit())) && (card.getSuit().equals(otherCard4.getSuit()))) {
+						if((card.getSuit().equals(otherCard1.getSuit())) && (card.getSuit().equals(otherCard2.getSuit())) 
+						&& (card.getSuit().equals(otherCard3.getSuit())) && (card.getSuit().equals(otherCard4.getSuit()))) {
 							// Five cards match, so remove them from the list (they will remain face up)
+							scoreValue += (700 + scorePerCard.SuitCardValue(card.getRank()) +
+										   scorePerCard.SuitCardValue(otherCard1.getRank()) +
+										   scorePerCard.SuitCardValue(otherCard2.getRank()) + 
+										   scorePerCard.SuitCardValue(otherCard3.getRank()) +
+										   scorePerCard.SuitCardValue(otherCard4.getRank()));
+							getMainFrame().setScore(scoreValue);
 							this.getTurnedCardsBuffer().clear();
 						}
 						else
 						{
+							scoreValue -= 5;
+							getMainFrame().setScore(scoreValue);
 							// The cards do not match, so start the timer to turn them down
 							this.getTurnDownTimer().start();
 						}
