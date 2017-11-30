@@ -11,19 +11,18 @@ public class FlushLevel extends RankTrioLevel {
 		this.setRowsPerGrid(5);
 		// TODO Auto-generated constructor stub
 	}
-
 	@Override
 	protected void makeDeck() {
-		// In Flush level 
-
+		
 		//back card
 		ImageIcon backIcon = this.getCardIcons()[this.getTotalCardsPerDeck()];
 
 		int cardsToAdd[] = new int[getRowsPerGrid() * getCardsPerRow()];
-//		int clubs = 0, diamonds = 1, hearts = 2, spades = 3;
-//		int c = 0, d = 15, h = 30, s = 40;
-//		
-//		switch ()
+		
+		int clubs = 0, diamonds = 1, hearts = 2, spades = 3;
+		int c = 0, d = 15, h = 30, s = 40;
+					
+		
 		for(int i = 0; i < (getRowsPerGrid() * getCardsPerRow()); i++)
 		{
 			cardsToAdd[i] = i;
@@ -75,9 +74,5 @@ public class FlushLevel extends RankTrioLevel {
 					return true;
 				}
 				return false;
+				}
 	}
-	
-	public static void testClass(){
-		
-	}
-}
