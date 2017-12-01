@@ -246,7 +246,7 @@ public class MemoryFrame extends JFrame {
 	/**
 	 * Shows an instructional dialog box to the user
 	 */
-	void showInstructions()
+	public void showInstructions()
 	{
 		dprintln("MemoryGame.showInstructions()");
 		final String HOWTOPLAYTEXT = 

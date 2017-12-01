@@ -2,7 +2,7 @@
  * Represents a card, keeps Icons for front and back, handles mouse clicks
  *
  * @author Michael Leonhard (Original Author)
- * @author Modified by Bienvenido Vélez (UPRM)
+ * @author Modified by Bienvenido Vï¿½lez (UPRM)
  * @version Sept 2017
  */
 

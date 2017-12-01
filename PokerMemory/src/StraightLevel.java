@@ -13,7 +13,7 @@ public class StraightLevel extends FlushLevel {
 		// TODO Auto-generated constructor stub
 	}
 	
-	protected boolean turnUp(MyCard myCard) {
+	protected boolean turnUp(Card card) {
 		long scoreValue = 0;
 		//ScorePerCard scorePerCard = new ScorePerCard(null, null, null, getTotalCardsPerDeck(), null, null);
 		// TODO Auto-generated method stub
@@ -21,17 +21,17 @@ public class StraightLevel extends FlushLevel {
 		if(this.getTurnedCardsBuffer().size() < getCardsToTurnUp()) 
 		{
 			// add the card to the list
-			this.getTurnedCardsBuffer().add(myCard);
+			this.getTurnedCardsBuffer().add(card);
 			if(this.getTurnedCardsBuffer().size() == getCardsToTurnUp())
 			{
 				// We are uncovering the last cards in this turn
 				// Record the player's turn
 				this.getTurnsTakenCounter().increment();
 				// get the other card (which was already turned up)
-				MyCard otherCard1 = (MyCard) this.getTurnedCardsBuffer().get(0);
-				MyCard otherCard2 = (MyCard) this.getTurnedCardsBuffer().get(1);
-				MyCard otherCard3 = (MyCard) this.getTurnedCardsBuffer().get(2);
-				MyCard otherCard4 = (MyCard) this.getTurnedCardsBuffer().get(3);
+				Card otherCard1 = (Card) this.getTurnedCardsBuffer().get(0);
+				Card otherCard2 = (Card) this.getTurnedCardsBuffer().get(1);
+				Card otherCard3 = (Card) this.getTurnedCardsBuffer().get(2);
+				Card otherCard4 = (Card) this.getTurnedCardsBuffer().get(3);
 				
 //				int orderSequence[] = {scorePerCard.SuitCardValue(card.getRank()), 
 //									   scorePerCard.SuitCardValue(otherCard1.getRank()),
@@ -52,9 +52,11 @@ public class StraightLevel extends FlushLevel {
 //									   CardValue(otherCard4.getRank())};
 				
 				
-				int orderSequence[] = {myCard.CardValue(), otherCard1.CardValue(), 
-									   otherCard2.CardValue(), otherCard3.CardValue(), 
-									   otherCard4.CardValue()};
+				int orderSequence[] = {(CardValue(card.getRank())), CardValue(otherCard1.getRank()), 
+									   CardValue(otherCard2.getRank()), CardValue(otherCard3.getRank()), 
+									   CardValue(otherCard4.getRank())};
+				
+				Arrays.sort(orderSequence);
 				
 				int max = orderSequence[0];
 				for(int i=0; i<5; i++)
@@ -72,8 +74,8 @@ public class StraightLevel extends FlushLevel {
 				if((orderSequence[4] - orderSequence[3] == 1) && (orderSequence[3] - orderSequence[2] == 1) 
 				&& (orderSequence[2] - orderSequence[1] == 1) && (orderSequence[1] - orderSequence[0] == 1)) 
 				{
-					if((myCard.getSuit().equals(otherCard1.getSuit())) && (myCard.getSuit().equals(otherCard2.getSuit())) 
-					&& (myCard.getSuit().equals(otherCard3.getSuit())) && (myCard.getSuit().equals(otherCard4.getSuit()))) 
+					if((card.getSuit().equals(otherCard1.getSuit())) && (card.getSuit().equals(otherCard2.getSuit())) 
+					&& (card.getSuit().equals(otherCard3.getSuit())) && (card.getSuit().equals(otherCard4.getSuit()))) 
 					{
 						scoreValue -= 5;
 						getMainFrame().setScore(scoreValue);
@@ -89,8 +91,8 @@ public class StraightLevel extends FlushLevel {
 				}
 				else
 				{
-					//scoreValue -= 5;
-					//getMainFrame().setScore(scoreValue);
+					scoreValue -= 5;
+					getMainFrame().setScore(scoreValue);
 					// The cards do not match, so start the timer to turn them down
 					this.getTurnDownTimer().start();
 				}
@@ -100,62 +102,33 @@ public class StraightLevel extends FlushLevel {
 		return false;
 	}
 	
-//	public int CardValue(String s){
-//		switch (s)
-//		{
-//			case("a"):
-//				value = 20;
-//				break;
-//				
-//			case("k"):
-//				value = 13;
-//				break;
-//				
-//			case("q"):
-//				value = 12;
-//				break;
-//				
-//			case("j"):
-//				value = 11;
-//				break;
-//				
-//			case("t"):
-//				value = 10;
-//				break;
-//			
-//			case("2"):
-//				value = 2;
-//				break;
-//				
-//			case("3"):
-//				value = 3;
-//				break;
-//				
-//			case("4"):
-//				value = 4;
-//				break;
-//				
-//			case("5"):
-//				value = 5;
-//				break;
-//				
-//			case("6"):
-//				value = 6;
-//				break;
-//				
-//			case("7"):
-//				value = 7;
-//				break;
-//				
-//			case("8"):
-//				value = 8;
-//				break;
-//				
-//			case("9"):
-//				value = 9;
-//				break;
-//		}
-//		return value;
-//	}
-
+	public int CardValue(String s)
+	{		
+		switch(s)
+		{
+			case("a"):
+				value = 20;
+				break;
+				
+			case("k"):
+				value = 13;
+				break;
+				
+			case("q"):
+				value = 12;
+				break;
+				
+			case("j"):
+				value = 11;
+				break;
+				
+			case("t"):
+				value = 10;
+				break;
+				
+			default:
+				value = Integer.valueOf(s);
+		}
+		return value;
+	}
 }
