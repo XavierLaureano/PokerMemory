@@ -148,8 +148,5 @@ public class MyMemoryFrame extends MemoryFrame {
 			super.newGame(difficultyMode);;
 		}
 	}
-	
-	public void pushDummyMethod(){
-		
-	}
+
 }
