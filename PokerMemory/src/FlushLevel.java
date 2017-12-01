@@ -45,41 +45,43 @@ public class FlushLevel extends RankTrioLevel {
 	protected boolean turnUp(Card card) {
 		// TODO Auto-generated method stub
 		// the card may be turned
-				if(this.getTurnedCardsBuffer().size() < getCardsToTurnUp()) 
+		if(this.getTurnedCardsBuffer().size() < getCardsToTurnUp()) 
+		{
+			// add the card to the list
+			this.getTurnedCardsBuffer().add(card);
+			if(this.getTurnedCardsBuffer().size() == getCardsToTurnUp())
+			{
+				// We are uncovering the last cards in this turn
+				// Record the player's turn
+				this.getTurnsTakenCounter().increment();
+				// get the other card (which was already turned up)
+				Card otherCard1 = (Card) this.getTurnedCardsBuffer().get(0);
+				Card otherCard2 = (Card) this.getTurnedCardsBuffer().get(1);
+				Card otherCard3 = (Card) this.getTurnedCardsBuffer().get(2);
+				Card otherCard4 = (Card) this.getTurnedCardsBuffer().get(3);
+				if((card.getSuit().equals(otherCard1.getSuit())) && (card.getSuit().equals(otherCard2.getSuit())) 
+				&& (card.getSuit().equals(otherCard3.getSuit())) && (card.getSuit().equals(otherCard4.getSuit())))
 				{
-					// add the card to the list
-					this.getTurnedCardsBuffer().add(card);
-					if(this.getTurnedCardsBuffer().size() == getCardsToTurnUp())
-					{
-						// We are uncovering the last cards in this turn
-						// Record the player's turn
-						this.getTurnsTakenCounter().increment();
-						// get the other card (which was already turned up)
-						Card otherCard1 = (Card) this.getTurnedCardsBuffer().get(0);
-						Card otherCard2 = (Card) this.getTurnedCardsBuffer().get(1);
-						Card otherCard3 = (Card) this.getTurnedCardsBuffer().get(2);
-						Card otherCard4 = (Card) this.getTurnedCardsBuffer().get(3);
-						if((card.getSuit().equals(otherCard1.getSuit())) && (card.getSuit().equals(otherCard2.getSuit())) 
-						&& (card.getSuit().equals(otherCard3.getSuit())) && (card.getSuit().equals(otherCard4.getSuit()))) {
-							// Five cards match, so remove them from the list (they will remain face up)
-							scoreValue += (700 + scorePerCard.CardValue(card.getRank()) +
-										   scorePerCard.CardValue(otherCard1.getRank()) +
-										   scorePerCard.CardValue(otherCard2.getRank()) + 
-										   scorePerCard.CardValue(otherCard3.getRank()) +
-										   scorePerCard.CardValue(otherCard4.getRank()));
-							getMainFrame().setScore(scoreValue);
-							this.getTurnedCardsBuffer().clear();
-						}
-						else
-						{
-							scoreValue -= 5;
-							getMainFrame().setScore(scoreValue);
-							// The cards do not match, so start the timer to turn them down
-							this.getTurnDownTimer().start();
-						}
-					}
-					return true;
+					scoreValue += (700 + scorePerCard.CardValue(card.getRank()) +
+								   scorePerCard.CardValue(otherCard1.getRank()) +
+								   scorePerCard.CardValue(otherCard2.getRank()) + 
+								   scorePerCard.CardValue(otherCard3.getRank()) +
+								   scorePerCard.CardValue(otherCard4.getRank()));
+					getMainFrame().setScore(scoreValue);
+					// Five cards match, so remove them from the list (they will remain face up)
+					this.getTurnedCardsBuffer().clear();
 				}
-				return false;
+				
+				else
+				{
+					scoreValue -= 5;
+					getMainFrame().setScore(scoreValue);
+					// The cards do not match, so start the timer to turn them down
+					this.getTurnDownTimer().start();
 				}
+			}
+			return true;
+		}
+		return false;
 	}
+}

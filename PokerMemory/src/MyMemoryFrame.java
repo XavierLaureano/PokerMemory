@@ -17,6 +17,9 @@ import javax.swing.SwingConstants;
 
 public class MyMemoryFrame extends MemoryFrame {
 	
+	
+	int dummy;
+	
 	/**
 	 * 
 	 */
@@ -71,7 +74,7 @@ public class MyMemoryFrame extends MemoryFrame {
 		memoryMenu.add(straightMenuItem);
 		
 		JMenuItem comboMenuItem = new JMenuItem("Combo Level");
-		flushMenuItem.addActionListener(menuHandler);
+		comboMenuItem.addActionListener(menuHandler);
 		memoryMenu.add(comboMenuItem);
 
 		JMenuItem mntmHowToPlay = new JMenuItem("How To Play");
