@@ -43,7 +43,7 @@ public class MyMemoryFrame extends MemoryFrame {
 				try {
 					if(e.getActionCommand().equals("Flush Level")) newGame("flushlevel");
 					else if(e.getActionCommand().equals("Straight Level")) newGame("straightlevel");
-//					else if(e.getActionCommand().equals("Combo Level")) newGame("combolevel");
+					else if(e.getActionCommand().equals("Combo Level")) newGame("combolevel");
 				} catch (IOException e2) {
 					e2.printStackTrace(); throw new RuntimeException("IO ERROR");
 				}
@@ -57,10 +57,10 @@ public class MyMemoryFrame extends MemoryFrame {
 		JMenuItem straightMenuItem = new JMenuItem("Straight Level");
 		straightMenuItem.addActionListener(menuHandler);
 		memoryMenu.add(straightMenuItem);
-//		
-//		JMenuItem comboMenuItem = new JMenuItem("Combo Level");
-//		flushMenuItem.addActionListener(menuHandler);
-//		memoryMenu.add(comboMenuItem);
+		
+		JMenuItem comboMenuItem = new JMenuItem("Combo Level");
+		flushMenuItem.addActionListener(menuHandler);
+		memoryMenu.add(comboMenuItem);
 			
 	}
 	
@@ -68,6 +68,7 @@ public class MyMemoryFrame extends MemoryFrame {
 		this.scoreLabel.getText();
 	}
 	
+	@Override
 	public void newGame(String difficultyMode) throws IOException
 	{
 		// Reset the turn counter label
@@ -130,19 +131,19 @@ public class MyMemoryFrame extends MemoryFrame {
 			this.setVisible(true);
 		}
 		
-//		else if(difficultyMode.equalsIgnoreCase("combolevel")) {
-//			this.setGameLevel(new ComboLevel(this.getTurnCounterLabel(), this));
-//			this.getLevelDescriptionLabel().setText("Combo Level");
-//			this.getTurnCounterLabel().reset();
-//			
-//			// clear out the content pane (removes turn counter label and card field)
-//			BorderLayout bl  = (BorderLayout) this.getContentPane().getLayout();
-//			this.getContentPane().remove(bl.getLayoutComponent(BorderLayout.CENTER));
-//			this.getContentPane().add(showCardDeck(), BorderLayout.CENTER);
-//
-//			// show the window (in case this is the first game)
-//			this.setVisible(true);
-//		}
+		else if(difficultyMode.equalsIgnoreCase("combolevel")) {
+			this.setGameLevel(new ComboLevel(this.getTurnCounterLabel(), this));
+			this.getLevelDescriptionLabel().setText("Combo Level");
+			this.getTurnCounterLabel().reset();
+			
+			// clear out the content pane (removes turn counter label and card field)
+			BorderLayout bl  = (BorderLayout) this.getContentPane().getLayout();
+			this.getContentPane().remove(bl.getLayoutComponent(BorderLayout.CENTER));
+			this.getContentPane().add(showCardDeck(), BorderLayout.CENTER);
+
+			// show the window (in case this is the first game)
+			this.setVisible(true);
+		}
 		
 		else {
 			super.newGame(difficultyMode);;
