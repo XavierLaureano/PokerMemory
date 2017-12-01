@@ -149,5 +149,7 @@ public class MyMemoryFrame extends MemoryFrame {
 			super.newGame(difficultyMode);;
 		}
 	}
+	
+	int dummy = 0;
 
 }
