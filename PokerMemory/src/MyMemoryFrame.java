@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
@@ -66,6 +67,71 @@ public class MyMemoryFrame extends MemoryFrame {
 	
 	public void getScore() {
 		this.scoreLabel.getText();
+	}
+	
+	public void showInstructions(){
+		dprintln("MemoryGame.showInstructions()");
+		final String HOWTOPLAYTEXT = 
+				"How To Play\r\n" +
+						"\r\n" +
+						"EQUAL PAIR Level\r\n"+
+						"The game consists of 8 pairs of cards.  At the start of the game,\r\n"+
+						"every card is face down.  The object is to find all the pairs and\r"+
+						"turn them face up.\r"+
+						"\r\n"+
+						"Click on two cards to turn them face up. If the cards are the \r"+
+						"same, then you have discovered a pair.  The pair will remain\r"+
+						"turned up.  If the cards are different, they will flip back\r\n"+
+						"over automatically after a short delay.  Continue flipping\r"+
+						"cards until you have discovered all of the pairs.  The game\r"+
+						"is won when all cards are face up.\r\n"+
+						"\r\n"+
+						"SAME RANK TRIO Level\r\n"+
+						"The game consists of a grid of distinct cards.  At the start of the game,\r"+
+						"every card is face down.  The object is to find all the trioS \r"+
+						"of cards with the same rank and turn them face up.\r\n"+
+						"\r\n"+
+						"Click on three cards to turn them face up. If the cards have the \r"+
+						"same rank, then you have discovered a trio.  The trio will remain\r"+
+						"turned up.  If the cards are different, they will flip back\r\n"+
+						"over automatically after a short delay.  Continue flipping\r"+
+						"cards until you have discovered all of the TRIOS.  The game\r"+
+						"is won when all TRIOS are face up.\r\n"+
+						"\r\n"+
+						"Each time you flip THREE cards up, the turn counter will\r"+
+						"increase.  Try to win the game in the fewest number of turns!\r\n"+
+						"\r\n"+
+						"FLUSH Level\r\n"+
+						"The game consists of a grid of distinct cards.  At the start of the game,\r"+
+						"every card is face down.  The object is to find a flush.\r\n"+
+						"\r\n"+
+						"Click on five cards to turn them face up. If the cards have the \r\n"+
+						"same suit, then you have discovered a flush.  The flush will remain\r"+
+						"turned up.  If the cards are different, they will flip back\r"+
+						"over automatically after a short delay.  Continue flipping\r\n"+
+						"cards until you have discovered all of the flushes.  The game\r"+
+						"is won when there are no more flush posibilities in the game.\r\n"+
+						"\r\n"+
+						"Each time you flip five cards up, the turn counter will\r"+
+						"increase.  Try to win the game in the fewest number of turns!\r\n"+
+						"\r\n"+
+						"STRAIGHT Level\r\n"+
+						"The game consists of a grid of distinct cards.  At the start of the game,\r"+
+						"every card is face down.  The object is to find a straight set of cards.\r\n"+
+						"\r\n"+
+						"Click on five cards to turn them face up. If the cards have succesive numbers \r"+
+						", then you have discovered a straight.  The straight will remain\r"+
+						"turned up.  If the cards are not straight, they will flip back\r\n"+
+						"over automatically after a short delay.  Continue flipping\r"+
+						"cards until you have discovered all of the straights.  The game\r"+
+						"is won when there are no more straight posibilities in the game.\r\n"+
+						"\r\n"+
+						"Each time you flip five cards up, the turn counter will\r"+
+						"increase.  Try to win the game in the fewest number of turns!\r\n"+
+						"\r\n"+
+						"COMBO Level\r\n";
+
+		JOptionPane.showMessageDialog(this, HOWTOPLAYTEXT, "How To Play", JOptionPane.PLAIN_MESSAGE);
 	}
 	
 	@Override
@@ -145,11 +211,9 @@ public class MyMemoryFrame extends MemoryFrame {
 			this.setVisible(true);
 		}
 		
+		
 		else {
 			super.newGame(difficultyMode);;
 		}
 	}
-	
-	int dummy = 0;
-
 }

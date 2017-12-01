@@ -39,5 +39,12 @@ public class MyEqualPairLevel extends EqualPairLevel {
 		// there are already the number of EasyMode (two face up cards) in the turnedCardsBuffer
 		return false;
 	}
+	@Override
+	protected boolean  isGameOver(){
 
+		for (int i =0; i< this.getGrid().size();i++)
+			if(!this.getGrid().get(i).isFaceUp()) return false;
+
+		return true;
+	}
 }
