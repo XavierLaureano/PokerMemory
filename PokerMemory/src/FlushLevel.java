@@ -67,11 +67,11 @@ public class FlushLevel extends RankTrioLevel {
 						if((card.getSuit().equals(otherCard1.getSuit())) && (card.getSuit().equals(otherCard2.getSuit())) 
 						&& (card.getSuit().equals(otherCard3.getSuit())) && (card.getSuit().equals(otherCard4.getSuit()))) {
 							// Five cards match, so remove them from the list (they will remain face up)
-							scoreValue += (700 + scorePerCard.SuitCardValue(card.getRank()) +
-										   scorePerCard.SuitCardValue(otherCard1.getRank()) +
-										   scorePerCard.SuitCardValue(otherCard2.getRank()) + 
-										   scorePerCard.SuitCardValue(otherCard3.getRank()) +
-										   scorePerCard.SuitCardValue(otherCard4.getRank()));
+							scoreValue += (700 + scorePerCard.CardValue(card.getRank()) +
+										   scorePerCard.CardValue(otherCard1.getRank()) +
+										   scorePerCard.CardValue(otherCard2.getRank()) + 
+										   scorePerCard.CardValue(otherCard3.getRank()) +
+										   scorePerCard.CardValue(otherCard4.getRank()));
 							getMainFrame().setScore(scoreValue);
 							this.getTurnedCardsBuffer().clear();
 						}

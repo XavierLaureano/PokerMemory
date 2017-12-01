@@ -26,7 +26,7 @@ public class MyRankTrioLevel extends RankTrioLevel {
 				Card otherCard1 = (Card) this.getTurnedCardsBuffer().get(0);
 				Card otherCard2 = (Card) this.getTurnedCardsBuffer().get(1);
 				if((card.getRank().equals(otherCard1.getRank())) && (card.getRank().equals(otherCard2.getRank()))) {
-					scoreValue += 100 + 3*(scorePerCard.RankCardValue(card.getRank()));
+					scoreValue += 100 + 3*(scorePerCard.CardValue(card.getRank()));
 					getMainFrame().setScore(scoreValue);
 					// Three cards match, so remove them from the list (they will remain face up)
 					this.getTurnedCardsBuffer().clear();
