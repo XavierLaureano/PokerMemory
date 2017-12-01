@@ -41,16 +41,20 @@ public class StraightLevel extends FlushLevel {
 				
 				Arrays.sort(orderSequence);
 				
-				if(orderSequence[1] - orderSequence[0] == 1 && orderSequence[2] - orderSequence[1] == 1 
-				&& orderSequence[3] - orderSequence[2] == 1 && orderSequence[4] - orderSequence[3] == 1) 
-//				if(orderSequence[0]+1 == orderSequence[1] && orderSequence[1]+1 == orderSequence[2]
-//				&& orderSequence[2]+1 == orderSequence[3] && orderSequence[3]+1 == orderSequence[4])
+				if(orderSequence[0]+1 == orderSequence[1] 
+				&& orderSequence[1]+1 == orderSequence[2]
+				&& orderSequence[2]+1 == orderSequence[3] 
+				&& orderSequence[3]+1 == orderSequence[4])
 				{
-					if((card.getSuit().equals(otherCard1.getSuit())) && (card.getSuit().equals(otherCard2.getSuit())) 
-					&& (card.getSuit().equals(otherCard3.getSuit())) && (card.getSuit().equals(otherCard4.getSuit()))) 
+					if((card.getSuit().equals(otherCard1.getSuit())) 
+					&& (card.getSuit().equals(otherCard2.getSuit())) 
+					&& (card.getSuit().equals(otherCard3.getSuit())) 
+					&& (card.getSuit().equals(otherCard4.getSuit()))) 
 					{
 						scoreValue -= 5;
 						getMainFrame().setScore(scoreValue);
+						// The cards do not match, so start the timer to turn them down
+						this.getTurnDownTimer().start();
 					}
 					
 					else

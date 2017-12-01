@@ -17,9 +17,6 @@ import javax.swing.SwingConstants;
 
 public class MyMemoryFrame extends MemoryFrame {
 	
-	
-	int dummy;
-	
 	/**
 	 * 
 	 */
