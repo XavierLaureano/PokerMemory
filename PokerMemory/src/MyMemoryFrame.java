@@ -162,7 +162,6 @@ public class MyMemoryFrame extends MemoryFrame {
 			this.setVisible(true);
 		}
 		
-		
 		else {
 			super.newGame(difficultyMode);;
 		}
@@ -231,5 +230,4 @@ public class MyMemoryFrame extends MemoryFrame {
 
 		JOptionPane.showMessageDialog(this, HOWTOPLAYTEXT, "How To Play", JOptionPane.PLAIN_MESSAGE);
 	}
-
 }
