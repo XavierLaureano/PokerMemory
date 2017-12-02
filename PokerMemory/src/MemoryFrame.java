@@ -286,7 +286,7 @@ public class MemoryFrame extends JFrame {
 	/**
 	 * Shows an dialog box with information about the program
 	 */
-	void showAbout()
+	private void showAbout()
 	{
 		dprintln("MemoryGame.showAbout()");
 		final String ABOUTTEXT = "Game Customized at UPRM. Originally written by Mike Leonhard";

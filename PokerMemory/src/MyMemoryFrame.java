@@ -44,6 +44,7 @@ public class MyMemoryFrame extends MemoryFrame {
                 break;
             }
             menuBar.getMenu(1).remove(0);
+            menuBar.getMenu(1).remove(0);
         }
         
 		
@@ -56,6 +57,7 @@ public class MyMemoryFrame extends MemoryFrame {
 					else if(e.getActionCommand().equals("Straight Level")) newGame("straightlevel");
 					else if(e.getActionCommand().equals("Combo Level")) newGame("combolevel");
 					else if(e.getActionCommand().equals("How To Play")) showInstructions();
+					else if(e.getActionCommand().equals("About")) showAbout();
 				} catch (IOException e2) {
 					e2.printStackTrace(); throw new RuntimeException("IO ERROR");
 				}
@@ -77,7 +79,10 @@ public class MyMemoryFrame extends MemoryFrame {
 		JMenuItem mntmHowToPlay = new JMenuItem("How To Play");
 		mntmHowToPlay.addActionListener(menuHandler);
 		mnHelp.add(mntmHowToPlay);
-	
+		
+		JMenuItem mntmAbout = new JMenuItem("About");
+		mntmAbout.addActionListener(menuHandler);
+		mnHelp.add(mntmAbout);
 		
 	}
 	
@@ -172,62 +177,72 @@ public class MyMemoryFrame extends MemoryFrame {
 				"How To Play\r\n" +
 						"\r\n" +
 						"EQUAL PAIR Level\r\n"+
-						"The game consists of 8 pairs of cards.  At the start of the game,\r\n"+
-						"every card is face down.  The object is to find all the pairs and\r"+
-						"turn them face up.\r"+
+						"The game consists of 8 pairs of cards.  At the start of the game, "+
+						"every card is face down.  The object is to find all the pairs and "+
+						"turn them face up.\r\n"+
 						"\r\n"+
-						"Click on two cards to turn them face up. If the cards are the \r"+
-						"same, then you have discovered a pair.  The pair will remain\r"+
+						"Click on two cards to turn them face up. If the cards are the "+
+						"same, then you have discovered a pair.  The pair will remain "+
 						"turned up.  If the cards are different, they will flip back\r\n"+
-						"over automatically after a short delay.  Continue flipping\r"+
-						"cards until you have discovered all of the pairs.  The game\r"+
+						"over automatically after a short delay.  Continue flipping "+
+						"cards until you have discovered all of the pairs.  The game "+
 						"is won when all cards are face up.\r\n"+
 						"\r\n"+
 						"SAME RANK TRIO Level\r\n"+
-						"The game consists of a grid of distinct cards.  At the start of the game,\r"+
-						"every card is face down.  The object is to find all the trioS \r"+
+						"The game consists of a grid of distinct cards.  At the start of the game, "+
+						"every card is face down.  The object is to find all the trios "+
 						"of cards with the same rank and turn them face up.\r\n"+
 						"\r\n"+
-						"Click on three cards to turn them face up. If the cards have the \r"+
-						"same rank, then you have discovered a trio.  The trio will remain\r"+
+						"Click on three cards to turn them face up. If the cards have the "+
+						"same rank, then you have discovered a trio.  The trio will remain "+
 						"turned up.  If the cards are different, they will flip back\r\n"+
-						"over automatically after a short delay.  Continue flipping\r"+
-						"cards until you have discovered all of the TRIOS.  The game\r"+
-						"is won when all TRIOS are face up.\r\n"+
+						"over automatically after a short delay.  Continue flipping "+
+						"cards until you have discovered all of the trios.  The game "+
+						"is won when all trios are face up.\r\n"+
 						"\r\n"+
-						"Each time you flip THREE cards up, the turn counter will\r"+
+						"Each time you flip three cards up, the turn counter will "+
 						"increase.  Try to win the game in the fewest number of turns!\r\n"+
 						"\r\n"+
 						"FLUSH Level\r\n"+
-						"The game consists of a grid of distinct cards.  At the start of the game,\r"+
+						"The game consists of a grid of distinct cards.  At the start of the game, "+
 						"every card is face down.  The object is to find a flush.\r\n"+
 						"\r\n"+
-						"Click on five cards to turn them face up. If the cards have the \r\n"+
-						"same suit, then you have discovered a flush.  The flush will remain\r"+
-						"turned up.  If the cards are different, they will flip back\r"+
+						"Click on five cards to turn them face up. If the cards have the "+
+						"same suit, then you have discovered a flush.  The flush will remain "+
+						"turned up.  If the cards are different, they will flip back "+
 						"over automatically after a short delay.  Continue flipping\r\n"+
-						"cards until you have discovered all of the flushes.  The game\r"+
+						"cards until you have discovered all of the flushes.  The game "+
 						"is won when there are no more flush posibilities in the game.\r\n"+
 						"\r\n"+
-						"Each time you flip five cards up, the turn counter will\r"+
+						"Each time you flip five cards up, the turn counter will "+
 						"increase.  Try to win the game in the fewest number of turns!\r\n"+
 						"\r\n"+
 						"STRAIGHT Level\r\n"+
-						"The game consists of a grid of distinct cards.  At the start of the game,\r"+
+						"The game consists of a grid of distinct cards.  At the start of the game, "+
 						"every card is face down.  The object is to find a straight set of cards.\r\n"+
 						"\r\n"+
-						"Click on five cards to turn them face up. If the cards have succesive numbers \r"+
-						", then you have discovered a straight.  The straight will remain\r"+
-						"turned up.  If the cards are not straight, they will flip back\r\n"+
-						"over automatically after a short delay.  Continue flipping\r"+
-						"cards until you have discovered all of the straights.  The game\r"+
+						"Click on five cards to turn them face up. If the cards have succesive numbers "+
+						", then you have discovered a straight.  The straight will remain "+
+						"turned up." +
+						"If the cards are not straight, they will flip back\r\n"+
+						"over automatically after a short delay.  Continue flipping "+
+						"cards until you have discovered all of the straights.  The game "+
 						"is won when there are no more straight posibilities in the game.\r\n"+
 						"\r\n"+
-						"Each time you flip five cards up, the turn counter will\r"+
+						"Each time you flip five cards up, the turn counter will "+
 						"increase.  Try to win the game in the fewest number of turns!\r\n"+
 						"\r\n"+
 						"COMBO Level\r\n";
 
 		JOptionPane.showMessageDialog(this, HOWTOPLAYTEXT, "How To Play", JOptionPane.PLAIN_MESSAGE);
+	}
+	
+	private void showAbout()
+	{
+		dprintln("MemoryGame.showAbout()");
+		final String ABOUTTEXT = "Game Customized at UPRM. Originally written by Mike Leonhard";
+
+		JOptionPane.showMessageDialog(this, ABOUTTEXT
+				, "About Memory Game", JOptionPane.PLAIN_MESSAGE);
 	}
 }
