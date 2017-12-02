@@ -3,7 +3,7 @@ import javax.swing.JFrame;
 public class MyRankTrioLevel extends RankTrioLevel {
 	
 	long scoreValue = 0;
-	ScorePerCard scorePerCard = new ScorePerCard();
+	ValueOfCards scorePerCard = new ValueOfCards();
 	
 	protected MyRankTrioLevel(TurnsTakenCounterLabel validTurnTime, JFrame mainFrame) {
 		super(validTurnTime, mainFrame);
@@ -22,15 +22,20 @@ public class MyRankTrioLevel extends RankTrioLevel {
 				// We are uncovering the last card in this turn
 				// Record the player's turn
 				this.getTurnsTakenCounter().increment();
+				
 				// get the other card (which was already turned up)
 				Card otherCard1 = (Card) this.getTurnedCardsBuffer().get(0);
 				Card otherCard2 = (Card) this.getTurnedCardsBuffer().get(1);
-				if((card.getRank().equals(otherCard1.getRank())) && (card.getRank().equals(otherCard2.getRank()))) {
-					scoreValue += 100 + 3*(scorePerCard.CardValue(card.getRank()));
+				
+				if((card.getRank().equals(otherCard1.getRank())) && (card.getRank().equals(otherCard2.getRank()))) 
+				{
+					scoreValue += 100 + 3*(scorePerCard.cardValue(card.getRank()));
 					getMainFrame().setScore(scoreValue);
+					
 					// Three cards match, so remove them from the list (they will remain face up)
 					this.getTurnedCardsBuffer().clear();
 				}
+				
 				else
 				{
 					scoreValue -= 5;

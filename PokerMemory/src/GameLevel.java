@@ -22,7 +22,7 @@ import javax.swing.Timer;
 public abstract class GameLevel implements ActionListener 
 {
 	private Vector<Card> turnedCardsBuffer;					// List of cards turned up in current turn
-	private Vector<ScorePerCard> turnedCardsBuffer2;	
+	private Vector<ValueOfCards> turnedCardsBuffer2;	
 	private int TotalCardsPerDeck = 52;
 	private TurnsTakenCounterLabel turnsTakenCounter;	    // Turn counter is incremented at every card turned up
 	private Timer turnDownTimer;   							// Timer is used to make a delay

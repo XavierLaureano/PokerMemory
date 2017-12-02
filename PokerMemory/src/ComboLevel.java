@@ -42,28 +42,31 @@ public class ComboLevel extends StraightLevel {
 				Card otherCard4 = (Card) this.getTurnedCardsBuffer().get(3);
 				
 
-				int orderSequence[] = {(cardValue(card.getRank())), 
-										cardValue(otherCard1.getRank()), 
-									   	cardValue(otherCard2.getRank()), 
-									   	cardValue(otherCard3.getRank()), 
-									   	cardValue(otherCard4.getRank())};
+				int straightArray[] = {(valueOfCards.cardValue(card.getRank())), 
+										valueOfCards.cardValue(otherCard1.getRank()), 
+										valueOfCards.cardValue(otherCard2.getRank()), 
+										valueOfCards.cardValue(otherCard3.getRank()), 
+										valueOfCards.cardValue(otherCard4.getRank())};
+				Arrays.sort(straightArray);
 				
-				Arrays.sort(orderSequence);
-				
-				int comboArray[] = {comboCardValue(card.getRank()), 
-									comboCardValue(otherCard1.getRank()), 
-									comboCardValue(otherCard2.getRank()), 
-									comboCardValue(otherCard3.getRank()), 
-									comboCardValue(otherCard4.getRank())};
-				
+				int comboArray[] = {valueOfCards.cardValue(card.getRank()), 
+									valueOfCards.cardValue(otherCard1.getRank()), 
+									valueOfCards.cardValue(otherCard2.getRank()), 
+									valueOfCards.cardValue(otherCard3.getRank()), 
+									valueOfCards.cardValue(otherCard4.getRank())};
 				Arrays.sort(comboArray);
+				
+				card.faceUp();
 
 				Object selection[] = {"Flush", "Straight", "Royal Flush", "Pass"};
-				int index = JOptionPane.showOptionDialog(null, "                Select The Desired Hand", 
-															   "SELECTION", 
-															   JOptionPane.DEFAULT_OPTION, 
-															   JOptionPane.WARNING_MESSAGE, 
-															   null, selection, selection[0]);
+				
+				int index = JOptionPane.showOptionDialog(null, 
+														 "                Select The Desired Hand", 
+														 "SELECTION", 
+														 JOptionPane.DEFAULT_OPTION, 
+														 JOptionPane.WARNING_MESSAGE, 
+														 null, selection, selection[0]);
+				
 				
 				if(index == 0)
 				{
@@ -73,12 +76,11 @@ public class ComboLevel extends StraightLevel {
 					&& (card.getSuit().equals(otherCard3.getSuit())) 
 					&& (card.getSuit().equals(otherCard4.getSuit())))
 					{
-							
-						scoreValue += (700 + scorePerCard.CardValue(card.getRank()) +
-									   scorePerCard.CardValue(otherCard1.getRank()) +
-									   scorePerCard.CardValue(otherCard2.getRank()) + 
-									   scorePerCard.CardValue(otherCard3.getRank()) +
-									   scorePerCard.CardValue(otherCard4.getRank()));
+						scoreValue += (700 + valueOfCards.cardValue(card.getRank()) +
+								 			 valueOfCards.cardValue(otherCard1.getRank()) +
+								 			 valueOfCards.cardValue(otherCard2.getRank()) + 
+								 			 valueOfCards.cardValue(otherCard3.getRank()) +
+								 			 valueOfCards.cardValue(otherCard4.getRank()));
 						getMainFrame().setScore(scoreValue);
 						// Five cards match, so remove them from the list (they will remain face up)
 						this.getTurnedCardsBuffer().clear();
@@ -96,10 +98,10 @@ public class ComboLevel extends StraightLevel {
 				if(index == 1)
 				{
 					//Straight
-					if(orderSequence[0]+1 == orderSequence[1] 
-					&& orderSequence[1]+1 == orderSequence[2]
-					&& orderSequence[2]+1 == orderSequence[3] 
-					&& orderSequence[3]+1 == orderSequence[4])
+					if(straightArray[0]+1 == straightArray[1] 
+					&& straightArray[1]+1 == straightArray[2]
+					&& straightArray[2]+1 == straightArray[3] 
+					&& straightArray[3]+1 == straightArray[4])
 					{
 						if(card.getSuit().equals(otherCard1.getSuit()) 
 						&&(card.getSuit().equals(otherCard2.getSuit())) 
@@ -114,7 +116,7 @@ public class ComboLevel extends StraightLevel {
 						
 						else
 						{
-							scoreValue += 1000 + 100*orderSequence[4];
+							scoreValue += 1000 + 100*straightArray[4];
 							getMainFrame().setScore(scoreValue);
 							// Five cards match, so remove them from the list (they will remain face up)
 							this.getTurnedCardsBuffer().clear();
@@ -172,40 +174,5 @@ public class ComboLevel extends StraightLevel {
 			return true;
 		}
 		return false;
-	}
-
-	
-	public void executeFlush(){
-		
-
-	}
-	
-	public int comboCardValue(String s){
-		switch(s)
-		{
-			case("a"):
-				value = 14;
-				break;
-				
-			case("k"):
-				value = 13;
-				break;
-				
-			case("q"):
-				value = 12;
-				break;
-				
-			case("j"):
-				value = 11;
-				break;
-				
-			case("t"):
-				value = 10;
-				break;
-				
-			default:
-				value = Integer.valueOf(s);
-		}
-		return value;
 	}
 }

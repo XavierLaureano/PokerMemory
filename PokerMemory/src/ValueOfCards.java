@@ -1,9 +1,9 @@
-public class ScorePerCard {
+public class ValueOfCards {
 	
 	
 	int value = 0;
 	
-	public int CardValue(String s)
+	public int cardValue(String s)
 	{		
 		switch(s)
 		{

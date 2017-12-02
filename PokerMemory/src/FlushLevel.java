@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 public class FlushLevel extends RankTrioLevel {
 	
 	long scoreValue = 0;
-	ScorePerCard scorePerCard = new ScorePerCard();
+	ValueOfCards valueOfCards = new ValueOfCards();
 
 	protected FlushLevel(TurnsTakenCounterLabel validTurnTime, JFrame mainFrame) {
 		super(validTurnTime, mainFrame);
@@ -65,11 +65,11 @@ public class FlushLevel extends RankTrioLevel {
 				&& (card.getSuit().equals(otherCard3.getSuit())) 
 				&& (card.getSuit().equals(otherCard4.getSuit())))
 				{
-					scoreValue += (700 + scorePerCard.CardValue(card.getRank()) +
-								   scorePerCard.CardValue(otherCard1.getRank()) +
-								   scorePerCard.CardValue(otherCard2.getRank()) + 
-								   scorePerCard.CardValue(otherCard3.getRank()) +
-								   scorePerCard.CardValue(otherCard4.getRank()));
+					scoreValue += (700 + valueOfCards.cardValue(card.getRank()) +
+										 valueOfCards.cardValue(otherCard1.getRank()) +
+										 valueOfCards.cardValue(otherCard2.getRank()) + 
+										 valueOfCards.cardValue(otherCard3.getRank()) +
+										 valueOfCards.cardValue(otherCard4.getRank()));
 					getMainFrame().setScore(scoreValue);
 					// Five cards match, so remove them from the list (they will remain face up)
 					this.getTurnedCardsBuffer().clear();
