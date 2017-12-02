@@ -65,6 +65,23 @@ public class StraightLevel extends FlushLevel {
 						this.getTurnedCardsBuffer().clear();
 					}
 				}
+				
+				else if(straightArray[0] == 2 && straightArray[4] == 20)
+				{
+					scoreValue += 1000 + 100*straightArray[3];
+					getMainFrame().setScore(scoreValue);
+					// Five cards match, so remove them from the list (they will remain face up)
+					this.getTurnedCardsBuffer().clear();
+				}
+				
+				else if(straightArray[0] == 10 && straightArray[4] == 20)
+				{
+					scoreValue += 1000 + 100*14;
+					getMainFrame().setScore(scoreValue);
+					// Five cards match, so remove them from the list (they will remain face up)
+					this.getTurnedCardsBuffer().clear();
+				}
+				
 				else
 				{
 					scoreValue -= 5;

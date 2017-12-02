@@ -123,6 +123,22 @@ public class ComboLevel extends StraightLevel {
 						}
 					}
 					
+					else if(straightArray[0] == 2 && straightArray[4] == 20)
+					{
+						scoreValue += 1000 + 100*straightArray[3];
+						getMainFrame().setScore(scoreValue);
+						// Five cards match, so remove them from the list (they will remain face up)
+						this.getTurnedCardsBuffer().clear();
+					}
+					
+					else if(straightArray[0] == 10 && straightArray[4] == 20)
+					{
+						scoreValue += 1000 + 100*14;
+						getMainFrame().setScore(scoreValue);
+						// Five cards match, so remove them from the list (they will remain face up)
+						this.getTurnedCardsBuffer().clear();
+					}
+					
 					else
 					{
 						scoreValue -= 5;
@@ -152,6 +168,7 @@ public class ComboLevel extends StraightLevel {
 							// The cards do not match, so start the timer to turn them down
 							this.getTurnDownTimer().start();
 						}
+						
 						else
 						{
 							scoreValue += 10000;
