@@ -134,7 +134,6 @@ public class MyMemoryFrame extends MemoryFrame {
 			// show the window (in case this is the first game)
 			this.setVisible(true);			
 		}
-		
 		else if(difficultyMode.equalsIgnoreCase("straightlevel")) {
 			this.setGameLevel(new StraightLevel(this.getTurnCounterLabel(), this));
 			this.getLevelDescriptionLabel().setText("Straight Level");
@@ -148,7 +147,6 @@ public class MyMemoryFrame extends MemoryFrame {
 			// show the window (in case this is the first game)
 			this.setVisible(true);
 		}
-		
 		else if(difficultyMode.equalsIgnoreCase("combolevel")) {
 			this.setGameLevel(new ComboLevel(this.getTurnCounterLabel(), this));
 			this.getLevelDescriptionLabel().setText("Combo Level");
@@ -162,15 +160,12 @@ public class MyMemoryFrame extends MemoryFrame {
 			// show the window (in case this is the first game)
 			this.setVisible(true);
 		}
-		
 		else {
 			super.newGame(difficultyMode);;
 		}
-		
 	}
 	private void showInstructions(){
-		
-		JTextArea textArea = new JTextArea(30,42);
+		JTextArea textArea = new JTextArea(30,55);
 		dprintln("MemoryGame.showInstructions()");
 		final String HOWTOPLAYTEXT = 
 				"How To Play\r\n" +
@@ -183,9 +178,12 @@ public class MyMemoryFrame extends MemoryFrame {
 						"Click on two cards to turn them face up. If the cards are the \r\n"+
 						"same, then you have discovered a pair.  The pair will remain\r\n"+
 						"turned up.  If the cards are different, they will flip back\r\n"+
-						"over automatically after a short delay.  Continue flipping\r\n"+
+						"over automatically after a short delay and you will lose points.  Continue flipping\r\n"+
 						"cards until you have discovered all of the pairs.  The game\r\n"+
 						"is won when all cards are face up.\r\n"+
+						"\r\n"+
+						"Each Fail: -5 points\r\n"+
+						"Each Pair: 50 points \r\n"+
 						"\r\n"+
 						"SAME RANK TRIO Level\r\n"+
 						"The game consists of a grid of distinct cards.  At the start of the game,\r\n"+
@@ -195,12 +193,12 @@ public class MyMemoryFrame extends MemoryFrame {
 						"Click on three cards to turn them face up. If the cards have the \r\n"+
 						"same rank, then you have discovered a trio.  The trio will remain\r\n"+
 						"turned up.  If the cards are different, they will flip back\r\n"+
-						"over automatically after a short delay.  Continue flipping\r\n"+
-						"cards until you have discovered all of the pairs.  The game\r\n"+
+						"over automatically after a short delay and you will lose points.  Continue flipping\r\n"+
+						"cards until you have discovered all of the trios.  The game\r\n"+
 						"is won when all cards are face up.\r\n"+
 						"\r\n"+
-						"Each time you flip two cards up, the turn counter will\r\n"+
-						"increase.  Try to win the game in the fewest number of turns!"+
+						"Each time you flip three cards up, the turn counter will\r\n"+
+						"increase.  Try to win the game in the fewest number of turns!\r\n"+
 						"\r\n"+
 						"Each Fail: -5 points\r\n"+
 						"Each Trio: 100 points\r\n"+
@@ -212,7 +210,7 @@ public class MyMemoryFrame extends MemoryFrame {
 						"Click on five cards to turn them face up. If the cards have the\r\n"+
 						"same suit, then you have discovered a flush.  The flush will remain\r\n"+
 						"turned up.  If the cards are different, they will flip back over\r\n"+
-						"automatically after a short delay.  Continue flipping\r\n"+
+						"automatically after a short delay and you will lose points.  Continue flipping\r\n"+
 						"cards until you have discovered all of the flushes.  The game\r\n"+
 						"is won when there are no more flush posibilities in the game.\r\n"+
 						"\r\n"+
@@ -220,15 +218,51 @@ public class MyMemoryFrame extends MemoryFrame {
 						"increase.  Try to win the game in the fewest number of turns!\r\n"+
 						"\r\n"+
 						"Each Fail: -5 points\r\n"+
-						"Each Flush: 700 points + \r\n"+
+						"Each Flush: 700 points + sum of the ranks in all the cards (A = 20) \r\n"+
 						"\r\n"+
 						"STRAIGHT Level\r\n"+
-						"COMBO Level\r\n";
+						"The game consists of a grid of distinct cards.  At the start of the game,\r\n"+
+						"every card is face down.  The object is to find a Straight.\r\n"+
+						"\r\n"+
+						"Click on five cards to turn them face up. If the cards have a\r\n"+
+						"sequential rank in at least two different suits, then you have discovered a Straight.\r\n"+
+						"The Straight will remain\r\n"+
+						"turned up.  If the cards are different, they will flip back over\r\n"+
+						"automatically after a short delay and you will lose points.  Continue flipping\r\n"+
+						"cards until you have discovered all of the Straights.  The game\r\n"+
+						"is won when there are no more Straight posibilities in the game.\r\n"+
+						"\r\n"+
+						"Each time you flip five consecutive cards up, the turn counter will\r\n"+
+						"increase.  Try to win the game in the fewest number of turns!\r\n"+
+						"\r\n"+
+						"Each Fail: -5 points\r\n"+
+						"Each Straight: 1000 points * 100 times the rank of the highest card in the obtained sequence (A = 20) \r\n"+
+						"\r\n"+
+						"COMBO Level\r\n"+
+						"The game consists of a grid of distinct cards.  At the start of the game,\r\n"+
+						"every card is face down.  The object is to find a Flush, Straight or Royal Flush.\r\n"+
+						"\r\n"+
+						"Click on five cards to turn them face up. If the cards have a\r\n"+
+						"sequential rank in at least two different suits (Straight), a same suit in all cards (Flush) or \r\n"+
+						"a combination of A, K, J, Q and 10 (Royal Flush) then you may select the option you want to play.\r\n"+
+						"If you decide to, the cards will flip back over\r\n"+
+						"automatically after a short delay and you will lose points.  Continue flipping\r\n"+
+						"cards until you have discovered all of the Straights, Flushes or Royal Flushes.  The game\r\n"+
+						"is won when there are no more Straight, Flushes or Royal Flushes posibilities in the game.\r\n"+
+						"\r\n"+
+						"Each time you flip five consecutive cards up and choose an option, the turn counter will\r\n"+
+						"increase.  Try to win the game in the fewest number of turns!\r\n"+
+						"\r\n"+
+						"Each Fail/Pass: -5 points\r\n"+
+						"Each Flush: 700 points + sum of the ranks in all the cards (A = 20) \r\n"+
+						"Each Straight: 1,000 points * 100 times the rank of the highest card in the sequence (A = 20) \r\n"+
+						"Each Royal Flush = 10,000 points "+
+						"\r\n";
 		textArea.setText(HOWTOPLAYTEXT);
 		textArea.setEditable(false);
+		//Add Scroll-bar to the How To Play Menu
 		JScrollPane scrolling = new JScrollPane(textArea);
 		JOptionPane.showMessageDialog(this, scrolling, "How To Play", JOptionPane.PLAIN_MESSAGE);
-	
 	}
 	
 	private void showAbout()
