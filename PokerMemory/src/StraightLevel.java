@@ -76,7 +76,7 @@ public class StraightLevel extends FlushLevel {
 				
 				else if(straightArray[0] == 10 && straightArray[4] == 20)
 				{
-					scoreValue += 1000 + 100*14;
+					scoreValue += 1000 + 100*20;
 					getMainFrame().setScore(scoreValue);
 					// Five cards match, so remove them from the list (they will remain face up)
 					this.getTurnedCardsBuffer().clear();
