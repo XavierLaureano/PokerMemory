@@ -1,4 +1,5 @@
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class MyRankTrioLevel extends RankTrioLevel {
 	
@@ -26,7 +27,7 @@ public class MyRankTrioLevel extends RankTrioLevel {
 				// get the other card (which was already turned up)
 				Card otherCard1 = (Card) this.getTurnedCardsBuffer().get(0);
 				Card otherCard2 = (Card) this.getTurnedCardsBuffer().get(1);
-				
+
 				if((card.getRank().equals(otherCard1.getRank())) && (card.getRank().equals(otherCard2.getRank()))) 
 				{
 					scoreValue += 100 + 3*(scorePerCard.cardValue(card.getRank()));
@@ -35,8 +36,7 @@ public class MyRankTrioLevel extends RankTrioLevel {
 					// Three cards match, so remove them from the list (they will remain face up)
 					this.getTurnedCardsBuffer().clear();
 				}
-				
-				else
+				else 
 				{
 					scoreValue -= 5;
 					getMainFrame().setScore(scoreValue);
@@ -45,18 +45,8 @@ public class MyRankTrioLevel extends RankTrioLevel {
 				}
 			}
 			return true;
-		}
+	}
 		return false;
-	}
-	
-	@Override
-	protected boolean  isGameOver()
-	{
-		
-		for (int i =0; i< this.getGrid().size();i++)
-			if(!this.getGrid().get(i).isFaceUp()) 
-			return false;
-		return true;
-	}
-
 }
+}
+

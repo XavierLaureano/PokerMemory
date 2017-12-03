@@ -244,7 +244,7 @@ public class MyMemoryFrame extends MemoryFrame {
 						"\r\n"+
 						"Click on five cards to turn them face up. If the cards have a\r\n"+
 						"sequential rank in at least two different suits (Straight), a same suit in all cards (Flush) or \r\n"+
-						"a combination of A, K, J, Q and 10 (Royal Flush) then you may select the option you want to play.\r\n"+
+						"a combination of 10, J, Q, K and A (Royal Flush) then you may select the option you want to play.\r\n"+
 						"If you decide to, the cards will flip back over\r\n"+
 						"automatically after a short delay and you will lose points.  Continue flipping\r\n"+
 						"cards until you have discovered all of the Straights, Flushes or Royal Flushes.  The game\r\n"+
@@ -255,7 +255,7 @@ public class MyMemoryFrame extends MemoryFrame {
 						"\r\n"+
 						"Each Fail/Pass: -5 points\r\n"+
 						"Each Flush: 700 points + sum of the ranks in all the cards (A = 20) \r\n"+
-						"Each Straight: 1,000 points * 100 times the rank of the highest card in the sequence (A = 20) \r\n"+
+						"Each Straight: 1,000 points + 100 times the rank of the highest card in the sequence (A = 20) \r\n"+
 						"Each Royal Flush = 10,000 points "+
 						"\r\n";
 		textArea.setText(HOWTOPLAYTEXT);
