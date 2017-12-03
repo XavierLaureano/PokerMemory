@@ -1,19 +1,15 @@
 import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Frame;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-
-import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
 
 public class MyMemoryFrame extends MemoryFrame {
 	
@@ -170,71 +166,69 @@ public class MyMemoryFrame extends MemoryFrame {
 		else {
 			super.newGame(difficultyMode);;
 		}
+		
 	}
 	private void showInstructions(){
+		
+		JTextArea textArea = new JTextArea(30,42);
 		dprintln("MemoryGame.showInstructions()");
 		final String HOWTOPLAYTEXT = 
 				"How To Play\r\n" +
 						"\r\n" +
 						"EQUAL PAIR Level\r\n"+
-						"The game consists of 8 pairs of cards.  At the start of the game, "+
-						"every card is face down.  The object is to find all the pairs and "+
+						"The game consists of 8 pairs of cards.  At the start of the game,\r\n"+
+						"every card is face down.  The object is to find all the pairs and\r\n"+
 						"turn them face up.\r\n"+
 						"\r\n"+
-						"Click on two cards to turn them face up. If the cards are the "+
-						"same, then you have discovered a pair.  The pair will remain "+
+						"Click on two cards to turn them face up. If the cards are the \r\n"+
+						"same, then you have discovered a pair.  The pair will remain\r\n"+
 						"turned up.  If the cards are different, they will flip back\r\n"+
-						"over automatically after a short delay.  Continue flipping "+
-						"cards until you have discovered all of the pairs.  The game "+
+						"over automatically after a short delay.  Continue flipping\r\n"+
+						"cards until you have discovered all of the pairs.  The game\r\n"+
 						"is won when all cards are face up.\r\n"+
 						"\r\n"+
 						"SAME RANK TRIO Level\r\n"+
-						"The game consists of a grid of distinct cards.  At the start of the game, "+
-						"every card is face down.  The object is to find all the trios "+
+						"The game consists of a grid of distinct cards.  At the start of the game,\r\n"+
+						"every card is face down.  The object is to find all the trios \r\n"+
 						"of cards with the same rank and turn them face up.\r\n"+
 						"\r\n"+
-						"Click on three cards to turn them face up. If the cards have the "+
-						"same rank, then you have discovered a trio.  The trio will remain "+
+						"Click on three cards to turn them face up. If the cards have the \r\n"+
+						"same rank, then you have discovered a trio.  The trio will remain\r\n"+
 						"turned up.  If the cards are different, they will flip back\r\n"+
-						"over automatically after a short delay.  Continue flipping "+
-						"cards until you have discovered all of the trios.  The game "+
-						"is won when all trios are face up.\r\n"+
+						"over automatically after a short delay.  Continue flipping\r\n"+
+						"cards until you have discovered all of the pairs.  The game\r\n"+
+						"is won when all cards are face up.\r\n"+
 						"\r\n"+
-						"Each time you flip three cards up, the turn counter will "+
-						"increase.  Try to win the game in the fewest number of turns!\r\n"+
+						"Each time you flip two cards up, the turn counter will\r\n"+
+						"increase.  Try to win the game in the fewest number of turns!"+
+						"\r\n"+
+						"Each Fail: -5 points\r\n"+
+						"Each Trio: 100 points\r\n"+
 						"\r\n"+
 						"FLUSH Level\r\n"+
-						"The game consists of a grid of distinct cards.  At the start of the game, "+
+						"The game consists of a grid of distinct cards.  At the start of the game,\r\n"+
 						"every card is face down.  The object is to find a flush.\r\n"+
 						"\r\n"+
-						"Click on five cards to turn them face up. If the cards have the "+
-						"same suit, then you have discovered a flush.  The flush will remain "+
-						"turned up.  If the cards are different, they will flip back "+
-						"over automatically after a short delay.  Continue flipping\r\n"+
-						"cards until you have discovered all of the flushes.  The game "+
+						"Click on five cards to turn them face up. If the cards have the\r\n"+
+						"same suit, then you have discovered a flush.  The flush will remain\r\n"+
+						"turned up.  If the cards are different, they will flip back over\r\n"+
+						"automatically after a short delay.  Continue flipping\r\n"+
+						"cards until you have discovered all of the flushes.  The game\r\n"+
 						"is won when there are no more flush posibilities in the game.\r\n"+
 						"\r\n"+
-						"Each time you flip five cards up, the turn counter will "+
+						"Each time you flip five cards up, the turn counter will\r\n"+
 						"increase.  Try to win the game in the fewest number of turns!\r\n"+
+						"\r\n"+
+						"Each Fail: -5 points\r\n"+
+						"Each Flush: 700 points + \r\n"+
 						"\r\n"+
 						"STRAIGHT Level\r\n"+
-						"The game consists of a grid of distinct cards.  At the start of the game, "+
-						"every card is face down.  The object is to find a straight set of cards.\r\n"+
-						"\r\n"+
-						"Click on five cards to turn them face up. If the cards have succesive numbers "+
-						", then you have discovered a straight.  The straight will remain "+
-						"turned up." +
-						"If the cards are not straight, they will flip back\r\n"+
-						"over automatically after a short delay.  Continue flipping "+
-						"cards until you have discovered all of the straights.  The game "+
-						"is won when there are no more straight posibilities in the game.\r\n"+
-						"\r\n"+
-						"Each time you flip five cards up, the turn counter will "+
-						"increase.  Try to win the game in the fewest number of turns!\r\n"+
-						"\r\n"+
 						"COMBO Level\r\n";
-
-		JOptionPane.showMessageDialog(this, HOWTOPLAYTEXT, "How To Play", JOptionPane.PLAIN_MESSAGE);
+		textArea.setText(HOWTOPLAYTEXT);
+		textArea.setEditable(false);
+		JScrollPane scrolling = new JScrollPane(textArea);
+		JOptionPane.showMessageDialog(this, scrolling, "How To Play", JOptionPane.PLAIN_MESSAGE);
+	
 	}
 	
 	private void showAbout()
