@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 public class FlushLevel extends RankTrioLevel {
 	
 	long scoreValue = 0;
+	int countFlush = 0;
 	ValueOfCards valueOfCards = new ValueOfCards();
 
 	protected FlushLevel(TurnsTakenCounterLabel validTurnTime, JFrame mainFrame) {
@@ -73,6 +74,7 @@ public class FlushLevel extends RankTrioLevel {
 					getMainFrame().setScore(scoreValue);
 					// Five cards match, so remove them from the list (they will remain face up)
 					this.getTurnedCardsBuffer().clear();
+					countFlush++;
 				}
 				
 				else
@@ -86,5 +88,14 @@ public class FlushLevel extends RankTrioLevel {
 			return true;
 		}
 		return false;
+	}
+	@Override
+	public boolean isGameOver(){
+		// If 10 cards remain, end game
+		if(countFlush == 8)
+			return true;
+		else
+		return false;	
+		
 	}
 }

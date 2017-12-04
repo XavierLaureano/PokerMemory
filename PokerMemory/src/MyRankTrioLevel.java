@@ -1,9 +1,9 @@
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 public class MyRankTrioLevel extends RankTrioLevel {
 	
 	long scoreValue = 0;
+	int countTrio = 0;
 	ValueOfCards scorePerCard = new ValueOfCards();
 	
 	protected MyRankTrioLevel(TurnsTakenCounterLabel validTurnTime, JFrame mainFrame) {
@@ -35,6 +35,7 @@ public class MyRankTrioLevel extends RankTrioLevel {
 					
 					// Three cards match, so remove them from the list (they will remain face up)
 					this.getTurnedCardsBuffer().clear();
+					countTrio++;
 				}
 				else 
 				{
@@ -48,5 +49,14 @@ public class MyRankTrioLevel extends RankTrioLevel {
 	}
 		return false;
 }
+	@Override
+	public boolean isGameOver(){
+		// If 14 cards remain, end game
+		if(countTrio == 12)
+			return true;
+		else
+		return false;	
+		
+	}
 }
 
