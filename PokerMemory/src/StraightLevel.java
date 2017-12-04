@@ -66,7 +66,11 @@ public class StraightLevel extends FlushLevel {
 					}
 				}
 				
-				else if(straightArray[0] == 2 && straightArray[4] == 20)
+				else if(straightArray[0] == 2 
+					 && straightArray[1] == 3 
+					 && straightArray[2] == 4 
+					 && straightArray[3] == 5 
+					 && straightArray[4] == 20)
 				{
 					scoreValue += 1000 + 100*straightArray[3];
 					getMainFrame().setScore(scoreValue);
@@ -74,7 +78,11 @@ public class StraightLevel extends FlushLevel {
 					this.getTurnedCardsBuffer().clear();
 				}
 				
-				else if(straightArray[0] == 10 && straightArray[4] == 20)
+				else if(straightArray[0] == 10 
+					 && straightArray[1] == 11 
+					 && straightArray[2] == 12 
+					 && straightArray[3] == 13 
+					 && straightArray[4] == 20)
 				{
 					scoreValue += 1000 + 100*20;
 					getMainFrame().setScore(scoreValue);
