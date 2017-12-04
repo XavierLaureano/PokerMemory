@@ -13,6 +13,8 @@ public class MyRankTrioLevel extends RankTrioLevel {
 	
 	@Override
 	protected boolean turnUp(Card card) {
+		countTrio = 0;
+		
 		// the card may be turned
 		if(this.getTurnedCardsBuffer().size() < getCardsToTurnUp()) 
 		{
@@ -50,7 +52,7 @@ public class MyRankTrioLevel extends RankTrioLevel {
 		return false;
 }
 	@Override
-	public boolean isGameOver(){
+	protected boolean isGameOver(){
 		// If 14 cards remain, end game
 		if(countTrio == 12)
 			return true;

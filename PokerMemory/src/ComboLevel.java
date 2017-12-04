@@ -1,11 +1,7 @@
 import java.util.Arrays;
-
-
-import java.util.Scanner;
-
-
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
 
 public class ComboLevel extends StraightLevel {
 	
@@ -192,4 +188,20 @@ public class ComboLevel extends StraightLevel {
 		}
 		return false;
 	}
+	
+	@Override
+	protected boolean isGameOver()
+	{
+		ArrayList<Card> grid = new ArrayList<Card>();
+		for(int i = 0; i < this.getGrid().size(); i++)
+		{
+			if(!this.getGrid().get(i).isFaceUp())
+				grid.add(getGrid().get(i));
+		}
+		if(grid.size() == 10){
+			return true;
+		}
+		else
+			return false;
+		}
 }

@@ -17,6 +17,7 @@ public class FlushLevel extends RankTrioLevel {
 	}
 	@Override
 	protected void makeDeck() {
+		countFlush = 0;
 		
 		//back card
 		ImageIcon backIcon = this.getCardIcons()[this.getTotalCardsPerDeck()];
@@ -90,7 +91,7 @@ public class FlushLevel extends RankTrioLevel {
 		return false;
 	}
 	@Override
-	public boolean isGameOver(){
+	protected boolean isGameOver(){
 		// If 10 cards remain, end game
 		if(countFlush == 8)
 			return true;

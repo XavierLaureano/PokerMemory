@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.JFrame;
 
@@ -5,6 +6,7 @@ public class StraightLevel extends FlushLevel {
 	
 	long scoreValue = 0;
 	int value = 0;
+	int countStraight = 0;
 	ValueOfCards valueOfCards = new ValueOfCards();
 
 	protected StraightLevel(TurnsTakenCounterLabel validTurnTime, JFrame mainFrame) {
@@ -92,4 +94,21 @@ public class StraightLevel extends FlushLevel {
 		}
 		return false;
 	}
-}
+	
+	@Override
+	protected boolean isGameOver(){
+		
+		ArrayList<Card> grid = new ArrayList<Card>();
+		for(int i = 0; i < this.getGrid().size(); i++)
+		{
+			if(!this.getGrid().get(i).isFaceUp())
+				grid.add(getGrid().get(i));
+		}
+
+		if(grid.size() == 10){
+			return true;
+		}
+		else
+			return false;
+		}
+	}
