@@ -1,5 +1,9 @@
+//Java Project #1 Poker Memory
+//Team Losilluminatisbrrr
+//Bryan Figueroa Maldonado
+//Xavier Laureano Rivera
+
 public class ValueOfCards {
-	
 	
 	int value = 0;
 	

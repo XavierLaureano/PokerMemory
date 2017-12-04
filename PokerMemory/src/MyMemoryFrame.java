@@ -1,3 +1,8 @@
+//Java Project #1 Poker Memory
+//Team Losilluminatisbrrr
+//Bryan Figueroa Maldonado
+//Xavier Laureano Rivera
+
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,15 +15,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-
 public class MyMemoryFrame extends MemoryFrame {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JLabel scoreLabel;
-
 
 	public MyMemoryFrame(){
 		
@@ -43,7 +43,6 @@ public class MyMemoryFrame extends MemoryFrame {
             menuBar.getMenu(1).remove(0);
         }
         
-		
 		ActionListener menuHandler = new ActionListener() {
 		
 			public void actionPerformed(ActionEvent e) {

@@ -1,3 +1,8 @@
+//Java Project #1 Poker Memory
+//Team Losilluminatisbrrr
+//Bryan Figueroa Maldonado
+//Xavier Laureano Rivera
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
@@ -29,7 +34,7 @@ public class FlushLevel extends RankTrioLevel {
 		}
 
 		// randomize the order of the deck
-		this.randomizeIntArray(cardsToAdd);
+		//this.randomizeIntArray(cardsToAdd);
 
 		// make each card object
 		for(int i = 0; i < cardsToAdd.length; i++)
@@ -97,6 +102,5 @@ public class FlushLevel extends RankTrioLevel {
 			return true;
 		else
 		return false;	
-		
 	}
 }

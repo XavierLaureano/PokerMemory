@@ -1,3 +1,8 @@
+//Java Project #1 Poker Memory
+//Team Losilluminatisbrrr
+//Bryan Figueroa Maldonado
+//Xavier Laureano Rivera
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.JFrame;
@@ -112,7 +117,7 @@ public class StraightLevel extends FlushLevel {
 			if(!this.getGrid().get(i).isFaceUp())
 				grid.add(getGrid().get(i));
 		}
-
+		//No more Straight possibilities, end game
 		if(grid.size() == 10){
 			return true;
 		}

@@ -1,8 +1,10 @@
+//Java Project #1 Poker Memory
+//Team Losilluminatisbrrr
+//Bryan Figueroa Maldonado
+//Xavier Laureano Rivera
+
 public class ScoreLabel extends TurnsTakenCounterLabel {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	// data fields
 	private int scoreValue = 0;

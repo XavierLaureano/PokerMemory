@@ -1,3 +1,8 @@
+//Java Project #1 Poker Memory
+//Team Losilluminatisbrrr
+//Bryan Figueroa Maldonado
+//Xavier Laureano Rivera
+
 import javax.swing.JFrame;
 
 public class MyEqualPairLevel extends EqualPairLevel {

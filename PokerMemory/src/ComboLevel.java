@@ -1,3 +1,8 @@
+//Java Project #1 Poker Memory
+//Team Losilluminatisbrrr
+//Bryan Figueroa Maldonado
+//Xavier Laureano Rivera
+
 import java.util.Arrays;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -213,6 +218,7 @@ public class ComboLevel extends StraightLevel {
 			if(!this.getGrid().get(i).isFaceUp())
 				grid.add(getGrid().get(i));
 		}
+		//No more Straight, Flush or Royal Flush possibilities, end game
 		if(grid.size() == 10){
 			return true;
 		}
