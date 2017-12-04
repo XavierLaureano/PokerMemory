@@ -190,6 +190,14 @@ public class ComboLevel extends StraightLevel {
 					}
 				}
 				
+				else
+				{
+					scoreValue -= 5;
+					getMainFrame().setScore(scoreValue);
+					// The cards do not match, so start the timer to turn them down
+					this.getTurnDownTimer().start();
+				}
+				
 			}
 			return true;
 		}

@@ -236,7 +236,7 @@ public class MyMemoryFrame extends MemoryFrame {
 						"increase.  Try to win the game in the fewest number of turns!\r\n"+
 						"\r\n"+
 						"Each Fail: -5 points\r\n"+
-						"Each Straight: 1000 points * 100 times the rank of the highest card in the obtained sequence (A = 20) \r\n"+
+						"Each Straight: 1000 points + 100 times the rank of the highest card in the obtained sequence (A = 20) \r\n"+
 						"\r\n"+
 						"COMBO Level\r\n"+
 						"The game consists of a grid of distinct cards.  At the start of the game,\r\n"+
@@ -256,7 +256,7 @@ public class MyMemoryFrame extends MemoryFrame {
 						"Each Fail/Pass: -5 points\r\n"+
 						"Each Flush: 700 points + sum of the ranks in all the cards (A = 20) \r\n"+
 						"Each Straight: 1,000 points + 100 times the rank of the highest card in the sequence (A = 20) \r\n"+
-						"Each Royal Flush = 10,000 points "+
+						"Each Royal Flush = 100,000 points "+
 						"\r\n";
 		textArea.setText(HOWTOPLAYTEXT);
 		textArea.setEditable(false);
