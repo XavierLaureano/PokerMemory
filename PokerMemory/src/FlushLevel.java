@@ -34,7 +34,7 @@ public class FlushLevel extends RankTrioLevel {
 		}
 
 		// randomize the order of the deck
-		//this.randomizeIntArray(cardsToAdd);
+		this.randomizeIntArray(cardsToAdd);
 
 		// make each card object
 		for(int i = 0; i < cardsToAdd.length; i++)
